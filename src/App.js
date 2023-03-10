@@ -12,9 +12,9 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* <Route path="" element={<SeatsPage /> }/>
-                    <Route path="" element={<SessionsPage /> }/>
-                    <Route path="" element={<SuccessPage />}/> */}
+        <Route path="/sessoes/:idFilme" element={<SessionsPage /> }/>
+        {/* <Route path="/assentos" element={<SeatsPage /> }/> */}
+        {/* <Route path="/sucesso" element={<SuccessPage />}/> */}
       </Routes>
     </BrowserRouter>
   );

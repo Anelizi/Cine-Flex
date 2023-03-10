@@ -2,6 +2,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Filmes from "./Filmes";
 
 export default function HomePage() {
   const [imagem, setImagem] = useState([]);
@@ -19,20 +20,18 @@ export default function HomePage() {
     });
   }, []);
 
-//   if (imagem.length === 0){
-//     return <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"/>
-//   }
+  if (imagem.length === 0){
+    return <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"/>
+  }
 
   return (
     <PageContainer>
       Selecione o filme
       <ListContainer>
         {imagem.map((i) => (
-          <MovieContainer key={i.id}>
-            <Link to="">
-              <img src={i.posterURL} alt="poster" />
-            </Link>
-          </MovieContainer>
+          <Link to={`/sessoes/${i.id}`}  key={i.id}>
+            <Filmes filme={i.posterURL}/>
+          </Link>
         ))}
       </ListContainer>
     </PageContainer>
@@ -57,18 +56,4 @@ const ListContainer = styled.div`
   flex-direction: row;
   padding: 10px;
 `;
-const MovieContainer = styled.div`
-  width: 145px;
-  height: 210px;
-  box-shadow: 0px 2px 4px 2px #0000001a;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
-  cursor: pointer;
-  img {
-    width: 130px;
-    height: 190px;
-  }
-`;
+
