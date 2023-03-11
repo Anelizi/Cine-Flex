@@ -1,22 +1,46 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components"
 
 export default function SeatsPage() {
+    const [filme, setFilme] = useState([]);
+    const [dias, setDias] = useState([]);
+    const [sessao, setSessao] = useState([]);
+    const {idSessao} = useParams();
+    const [pontona, setPontona] = useState([]);
+
+    useEffect(()=>{
+        const url = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`
+        const promise = axios.get(url);
+
+        promise.then((res) => {
+            setFilme(res.data.movie);
+            setDias(res.data);
+            setSessao(res.data.seats);
+        });
+
+        promise.catch((err) => {
+            console.log(err.response.data);
+        });
+
+    }, []);
+
+    if (sessao.length === 0){
+        return <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"/>
+    }
 
     return (
         <PageContainer>
             Selecione o(s) assento(s)
 
             <SeatsContainer>
-                <SeatItem>01</SeatItem>
-                <SeatItem>02</SeatItem>
-                <SeatItem>03</SeatItem>
-                <SeatItem>04</SeatItem>
-                <SeatItem>05</SeatItem>
+                {sessao.map((s) => (<SeatItem key={s.id}>{s.name}</SeatItem>))}
             </SeatsContainer>
 
             <CaptionContainer>
-                <CaptionItem>
-                    <CaptionCircle />
+                <CaptionItem >
+                    <CaptionCircle  pontona={true} />
                     Selecionado
                 </CaptionItem>
                 <CaptionItem>
@@ -24,7 +48,7 @@ export default function SeatsPage() {
                     Disponível
                 </CaptionItem>
                 <CaptionItem>
-                    <CaptionCircle />
+                    <CaptionCircle pontona={false} />
                     Indisponível
                 </CaptionItem>
             </CaptionContainer>
@@ -41,11 +65,11 @@ export default function SeatsPage() {
 
             <FooterContainer>
                 <div>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster" />
+                    <img src={filme.posterURL} alt="poster" />
                 </div>
                 <div>
-                    <p>Tudo em todo lugar ao mesmo tempo</p>
-                    <p>Sexta - 14h00</p>
+                    <p>{filme.title}</p>
+                    <p>{dias.day.weekday} - {dias.name}</p>
                 </div>
             </FooterContainer>
 
@@ -96,8 +120,8 @@ const CaptionContainer = styled.div`
     margin: 20px;
 `
 const CaptionCircle = styled.div`
-    border: 1px solid blue;         // Essa cor deve mudar
-    background-color: lightblue;    // Essa cor deve mudar
+    border: 1px solid ${({pontona}) => pontona === true ? "#0E7D71" : pontona === false ? "#F7C52B" : "#7B8B99"};
+    background-color: ${({pontona}) => pontona === true ? "#1AAE9E" : pontona === false ? "#FBE192" : "#C3CFD9"};
     height: 25px;
     width: 25px;
     border-radius: 25px;
@@ -113,8 +137,8 @@ const CaptionItem = styled.div`
     font-size: 12px;
 `
 const SeatItem = styled.div`
-    border: 1px solid blue;         // Essa cor deve mudar
-    background-color: lightblue;    // Essa cor deve mudar
+    border: 1px solid ${({pontona}) => pontona === true ? "#0E7D71" : pontona === false ? "#F7C52B" : "#7B8B99"};         // Essa cor deve mudar
+    background-color: ${({pontona}) => pontona === true ? "#1AAE9E" : pontona === false ? "#FBE192" : "#C3CFD9"};    // Essa cor deve mudar
     height: 25px;
     width: 25px;
     border-radius: 25px;
@@ -124,6 +148,7 @@ const SeatItem = styled.div`
     align-items: center;
     justify-content: center;
     margin: 5px 3px;
+    cursor: pointer;
 `
 const FooterContainer = styled.div`
     width: 100%;

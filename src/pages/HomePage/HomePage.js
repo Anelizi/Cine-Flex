@@ -2,17 +2,17 @@ import styled from "styled-components";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Filmes from "./Filmes";
+import Filmes from "../../components/Filmes";
 
 export default function HomePage() {
-  const [imagem, setImagem] = useState([]);
+  const [filme, setFilme] = useState([]);
 
   useEffect(() => {
     const url = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
     const promise = axios.get(url);
 
     promise.then((res) => {
-      setImagem(res.data);
+      setFilme(res.data);
     });
 
     promise.catch((err) => {
@@ -20,7 +20,7 @@ export default function HomePage() {
     });
   }, []);
 
-  if (imagem.length === 0){
+  if (filme.length === 0){
     return <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"/>
   }
 
@@ -28,9 +28,9 @@ export default function HomePage() {
     <PageContainer>
       Selecione o filme
       <ListContainer>
-        {imagem.map((i) => (
-          <Link to={`/sessoes/${i.id}`}  key={i.id}>
-            <Filmes filme={i.posterURL}/>
+        {filme.map((f) => (
+          <Link to={`/sessoes/${f.id}`}  key={f.id}>
+            <Filmes filme={f.posterURL}/>
           </Link>
         ))}
       </ListContainer>

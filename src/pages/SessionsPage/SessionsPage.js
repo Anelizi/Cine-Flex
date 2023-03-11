@@ -2,9 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import styled from "styled-components"
+import Datas from "../../components/Datas";
 
 export default function SessionsPage() {
-    const [filme, setFilme] = useState([]);
     const [dias, setDias] = useState([]);
     const {idFilme} = useParams();
 
@@ -13,7 +13,7 @@ export default function SessionsPage() {
         const promise = axios.get(url);
 
         promise.then((res) => {
-            setFilme(res.data);
+            setDias(res.data);
         });
 
         promise.catch((err) => {
@@ -22,7 +22,7 @@ export default function SessionsPage() {
 
     }, []);
 
-    if (filme.length === 0){
+    if (dias.length === 0){
         return <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"/>
     }
 
@@ -30,21 +30,15 @@ export default function SessionsPage() {
         <PageContainer>
             Selecione o horário
             <div>
-                <SessionContainer>
-                    Sexta - 03/03/2023
-                    <ButtonsContainer>
-                        <button>14:00</button>
-                        <button>15:00</button>
-                    </ButtonsContainer>
-                </SessionContainer>
+                {dias.days.map((d) => <Datas key={d.id} days={d} />)}
             </div>
 
             <FooterContainer>
                 <div>
-                    <img src={filme.posterURL} alt="poster" />
+                    <img src={dias.posterURL} alt="poster" />
                 </div>
                 <div>
-                    <p>{filme.title}</p>
+                    <p>{dias.title}</p>
                 </div>
             </FooterContainer>
 
