@@ -2,17 +2,17 @@ import styled from "styled-components";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Filmes from "../../components/Filmes";
+import HomeMovie from "../../components/HomeMovie";
 
 export default function HomePage() {
-  const [filme, setFilme] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     const url = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
     const promise = axios.get(url);
 
     promise.then((res) => {
-      setFilme(res.data);
+      setMovies(res.data);
     });
 
     promise.catch((err) => {
@@ -20,24 +20,24 @@ export default function HomePage() {
     });
   }, []);
 
-  if (filme.length === 0){
-    return <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"/>
+  if (movies.length === 0) {
+    return (
+      <Image src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" />
+    );
   }
-
   return (
     <PageContainer>
       Selecione o filme
       <ListContainer>
-        {filme.map((f) => (
-          <Link to={`/sessoes/${f.id}`}  key={f.id}>
-            <Filmes filme={f.posterURL}/>
+        {movies.map((m) => (
+          <Link to={`/sessoes/${m.id}`} key={m.id}>
+            <HomeMovie movies={m.posterURL} title={m.title}/>
           </Link>
         ))}
       </ListContainer>
     </PageContainer>
   );
 }
-
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -56,4 +56,11 @@ const ListContainer = styled.div`
   flex-direction: row;
   padding: 10px;
 `;
-
+const Image = styled.img`
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`

@@ -1,8 +1,8 @@
 import styled from "styled-components";
-export default function Filmes({filme}) {
+export default function HomeMovie({ movies, title }) {
   return (
     <MovieContainer>
-      <img src={filme} alt="poster" />
+      <img src={movies} alt={title} />
     </MovieContainer>
   );
 }
