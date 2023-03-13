@@ -12,7 +12,7 @@ export default function SessionDate({ days }) {
       <ButtonsContainer>
         {showtime.map((s) => (
           <Link to={`/assentos/${s.id}`} key={s.id}>
-            <button>{s.name}</button>
+            <button data-test="showtime">{s.name}</button>
           </Link>
         ))}
       </ButtonsContainer>

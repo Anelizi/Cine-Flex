@@ -32,10 +32,10 @@ export default function SessionsPage() {
       Selecione o horário
       <div>
         {dates.days.map((d) => (
-          <SessionDate key={d.id} days={d} />
+          <SessionDate data-test="movie-day" key={d.id} days={d} />
         ))}
       </div>
-      <FooterContainer>
+      <FooterContainer data-test="footer">
         <div>
           <img src={dates.posterURL} alt={dates.title} />
         </div>

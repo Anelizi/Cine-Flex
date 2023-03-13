@@ -47,6 +47,7 @@ export default function SeatsPage({
       <SeatsContainer>
         {seat.seats.map((s) => (
           <SeatItem
+            data-test="seat"
             key={s.id}
             id={s.id}
             place={place}
@@ -78,7 +79,7 @@ export default function SeatsPage({
         cpf={cpf}
         setCPF={setCPF}
       />
-      <FooterContainer>
+      <FooterContainer data-test="footer">
         <div>
           <img src={seat.movie.posterURL} alt="poster" />
         </div>

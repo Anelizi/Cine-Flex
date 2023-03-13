@@ -38,6 +38,7 @@ export default function SeatForm({ name, setName, cpf, setCPF, setNumberID, plac
     <FormContainer onSubmit={recerva}>
       <label for="name">Nome do Comprador:</label>
       <input
+        data-test="client-name"
         id="name"
         value={name}
         onChange={(e) => setName(e.target.value)}
@@ -48,6 +49,7 @@ export default function SeatForm({ name, setName, cpf, setCPF, setNumberID, plac
 
       <label for="cpf">CPF do Comprador:</label>
       <input
+        data-test="client-cpf"
         id="cpf"
         value={cpf}
         onChange={(e) => setCPF(e.target.value)}
@@ -56,7 +58,7 @@ export default function SeatForm({ name, setName, cpf, setCPF, setNumberID, plac
         required
       />
 
-      <button onClick={recerva} type="submit">Reservar Assento(s)</button>
+      <button data-test="book-seat-btn" onClick={recerva} type="submit">Reservar Assento(s)</button>
     </FormContainer>
   );
 }

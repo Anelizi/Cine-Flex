@@ -11,24 +11,24 @@ export default function SuccessPage({name, cpf, movie, date, time, numberID}) {
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
 
-            <TextContainer>
+            <TextContainer data-test="movie-info">
                 <strong><p>Filme e sessão</p></strong>
                 <p>{movie}</p>
                 <p>{date} - {time}</p>
             </TextContainer>
 
-            <TextContainer>
+            <TextContainer data-test="seats-info">
                 <strong><p>Ingressos</p></strong>
                 {number.map((n) => (<p key={n}>Assento {n}</p>))}
             </TextContainer>
 
-            <TextContainer>
+            <TextContainer data-test="client-info">
                 <strong><p>Comprador</p></strong>
                 <p>Nome: {name}</p>
                 <p>CPF: {cpf}</p>
             </TextContainer>
             <Link to={"/"}>
-                <button>Voltar para Home</button>
+                <button data-test="go-home-btn" >Voltar para Home</button>
             </Link>
         </PageContainer>
     )
