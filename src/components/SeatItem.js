@@ -1,32 +1,28 @@
 import { useState } from "react";
 import styled from "styled-components";
-export default function SeatItem({
-  id,
-  place,
-  setPlace,
-  name,
-  isAvailable,
-}) {
+export default function SeatItem({ id, place, setPlace, number, isAvailable }) {
   const [select, setSelect] = useState(false);
 
   function selected() {
-    const newSelect = !select;
+    if (place) {
+      setSelect(true);
+      setPlace(place.filter((n) => n.id !== id));
+      setPlace([...place, { id: id, number: number }]);
+    } else {
+      setSelect(false);
+    }
+  }
 
-    setSelect(newSelect);
-
-    const newPlace = newSelect
-      ? [...place, { id, name }]
-      : place.filter((e) => e.id !== id);
-
-    setPlace(newPlace);
+  function unavailable() {
+    alert("Esse assento não está disponível");
   }
 
   return isAvailable ? (
     <Seat select={select} onClick={selected}>
-      {name}
+      {number}
     </Seat>
   ) : (
-    <SeatNo>{name}</SeatNo>
+    <SeatNo onClick={unavailable}>{number}</SeatNo>
   );
 }
 const Seat = styled.div`

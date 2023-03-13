@@ -4,17 +4,51 @@ import SeatsPage from "./pages/SeatsPage/SeatsPage";
 import SessionsPage from "./pages/SessionsPage/SessionsPage";
 import SuccessPage from "./pages/SuccessPage/SuccessPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 export default function App() {
+  const [name, setName] = useState("");
+  const [cpf, setCPF] = useState("");
+  const [movie, setMovie] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [numberID, setNumberID] = useState([]);
+
   return (
     <BrowserRouter>
       <NavContainer>CINEFLEX</NavContainer>
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/sessoes/:idFilme" element={<SessionsPage /> }/>
-        <Route path="/assentos/:idSessao" element={<SeatsPage /> }/>
-        <Route path="/sucesso" element={<SuccessPage />}/>
+        <Route path="/sessoes/:idFilme" element={<SessionsPage />} />
+        <Route
+          path="/assentos/:idSessao"
+          element={
+            <SeatsPage
+              name={name}
+              setName={setName}
+              cpf={cpf}
+              setCPF={setCPF}
+              setMovie={setMovie}
+              setDate={setDate}
+              setTime={setTime}
+              setNumberID={setNumberID}
+            />
+          }
+        />
+        <Route
+          path="/sucesso"
+          element={
+            <SuccessPage
+              name={name}
+              cpf={cpf}
+              movie={movie}
+              date={date}
+              time={time}
+              numberID={numberID}
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

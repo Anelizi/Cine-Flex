@@ -1,16 +1,65 @@
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-export default function SeatForm(){
-    return(
-        <FormContainer>
-        Nome do Comprador:
-        <input placeholder="Digite seu nome..." />
-        CPF do Comprador:
-        <input placeholder="Digite seu CPF..." />
-        <button>Reservar Assento(s)</button>
-      </FormContainer>
-    )
-}
 
+export default function SeatForm({ name, setName, cpf, setCPF, setNumberID, place }) {
+  const navigate = useNavigate();
+
+  function recerva(event) {
+    event.preventDefault();
+
+    if(place.length === 0){
+        alert("escolha um assento")
+    }else{
+      
+
+    let idss = [];
+    let numberId =[];
+    for(let i = 0; i < place.length; i++){
+      idss.push(place[i].id)
+      numberId.push(place[i].number)
+    }
+    setNumberID(numberId);
+    
+
+    const requisicao = axios.post(
+      "https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many",
+      {
+        ids: numberId,
+        name: name,
+        cpf: cpf,
+      }
+    );
+    requisicao.then(() => navigate("/sucesso"));
+    }
+  }
+
+  return (
+    <FormContainer onSubmit={recerva}>
+      <label for="name">Nome do Comprador:</label>
+      <input
+        id="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        type="text"
+        placeholder="Digite seu nome..."
+        required
+      />
+
+      <label for="cpf">CPF do Comprador:</label>
+      <input
+        id="cpf"
+        value={cpf}
+        onChange={(e) => setCPF(e.target.value)}
+        type="number"
+        placeholder="Digite seu CPF..."
+        required
+      />
+
+      <button onClick={recerva} type="submit">Reservar Assento(s)</button>
+    </FormContainer>
+  );
+}
 const FormContainer = styled.form`
   width: calc(100vw - 40px);
   display: flex;

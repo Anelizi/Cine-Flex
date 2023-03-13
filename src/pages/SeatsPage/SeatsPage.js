@@ -5,7 +5,16 @@ import styled from "styled-components";
 import SeatForm from "../../components/SeatForm";
 import SeatItem from "../../components/SeatItem";
 
-export default function SeatsPage() {
+export default function SeatsPage({
+  name,
+  setName,
+  cpf,
+  setCPF,
+  setMovie,
+  setDate,
+  setTime,
+  setNumberID,
+}) {
   const [seat, setSeat] = useState([]);
   const [place, setPlace] = useState([]);
   const { idSessao } = useParams();
@@ -16,6 +25,9 @@ export default function SeatsPage() {
 
     promise.then((res) => {
       setSeat(res.data);
+      setMovie(res.data.movie.title);
+      setDate(res.data.day.date);
+      setTime(res.data.name);
     });
 
     promise.catch((err) => {
@@ -32,11 +44,18 @@ export default function SeatsPage() {
   return (
     <PageContainer>
       Selecione o(s) assento(s)
-      
-      <SeatsContainer> 
-        {seat.seats.map((s) => (<SeatItem key={s.id} id={s.id} place={place} setPlace={setPlace} name={s.name} isAvailable={s.isAvailable}/>))}
+      <SeatsContainer>
+        {seat.seats.map((s) => (
+          <SeatItem
+            key={s.id}
+            id={s.id}
+            place={place}
+            setPlace={setPlace}
+            number={s.name}
+            isAvailable={s.isAvailable}
+          />
+        ))}
       </SeatsContainer>
-
       <CaptionContainer>
         <CaptionItem>
           <CaptionCircle place={true} />
@@ -51,9 +70,14 @@ export default function SeatsPage() {
           Indisponível
         </CaptionItem>
       </CaptionContainer>
-
-      <SeatForm/>
-
+      <SeatForm
+        setNumberID={setNumberID}
+        place={place}
+        name={name}
+        setName={setName}
+        cpf={cpf}
+        setCPF={setCPF}
+      />
       <FooterContainer>
         <div>
           <img src={seat.movie.posterURL} alt="poster" />
@@ -160,4 +184,4 @@ const Image = styled.img`
   bottom: 0;
   left: 0;
   right: 0;
-`
+`;
