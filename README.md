@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+<img width="100%" src="https://user-images.githubusercontent.com/88720426/231468427-b10021b7-7960-47e9-9091-1fcdd1f53fcc.png">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Cine-Flex is an entertainment platform dedicated to making the experience of booking movie tickets easier and more accessible for cinephiles. With our mobile app, you can choose the movies you want to watch, check showtimes, select your preferred seats, and secure your tickets with just a few taps on your device's screen. No more wasting time in lines or worrying about ticket availability. With Cine-Flex, your next cinematic adventure is just a touch away.
 
-## Available Scripts
+&nbsp;<div width="100%"  align="center">
+<img width="50%" src="https://github.com/Anelizi/Cine-Flex/assets/88720426/464c5dd1-ed26-4cb4-9604-00c37f251c62">
+</div>
 
-In the project directory, you can run:
+## **Technologies Used**
 
-### `npm start`
+- <!--CSS-->
+    <img alt="CSS" src="https://img.shields.io/badge/CSS-262a33.svg?logo=css3&logoColor=1572B6" />
+- <!--HTML-->
+    <img alt="HTML" src="https://img.shields.io/badge/HTML-262a33?logo=html5&logoColor=E34F26" />
+- <!-- JS -->
+    <img src="https://img.shields.io/badge/JavaScript-262a33?logo=javascript&logoColor=e8ae00" alt="JavaScript logo" title="JavaScript" height="25" />
+- <!--Styled-components-->
+    <img alt="Styled-components" src="https://img.shields.io/badge/Styled--Components-262a33.svg?logo=styled-components&logoColor=DB7093"/>
+- <!--Node.js-->
+    <img alt="Node.js" src="https://img.shields.io/badge/Node.js (version 14 or higher)-262a33.svg?logo=node.js&logoColor=43853D" />
+- <!--React-->
+    <img alt="React" src="https://img.shields.io/badge/React (version 16.8.0 or higher)-262a33.svg?logo=react&logoColor=%2361DAFB" />  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## **Installation Instructions**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clone the repository to your local machine. With the command **`git clone https://github.com/Anelizi/Cine-Flex.git`**
+2. Install project dependencies using the **`npm install`** command.
+3. Start the local server using the **`npm start`** command.
