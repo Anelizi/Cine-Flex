@@ -3,7 +3,7 @@
 Cine-Flex is an entertainment platform dedicated to making the experience of booking movie tickets easier and more accessible for cinephiles. With our mobile app, you can choose the movies you want to watch, check showtimes, select your preferred seats, and secure your tickets with just a few taps on your device's screen. No more wasting time in lines or worrying about ticket availability. With Cine-Flex, your next cinematic adventure is just a touch away.
 
 &nbsp;<div width="100%"  align="center">
-<img width="50%" src="https://github.com/Anelizi/Cine-Flex/assets/88720426/464c5dd1-ed26-4cb4-9604-00c37f251c62">
+<img width="50%" src="https://github.com/Anelizi/Cine-Flex/assets/88720426/79d49392-d5ad-4f5a-9c5a-4d1c13047ca6">
 </div>
 
 ## **Technologies Used**
